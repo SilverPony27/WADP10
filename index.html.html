@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <title>Email Validation</title>
+
+    <!-- AngularJS Library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+
+    <style>
+        .error {
+            color:red;
+        }
+    </style>
+</head>
+
+<body ng-controller="MainController">
+
+    <h2>Email Validation Form</h2>
+
+    <form name="myForm">
+
+        Enter Email:
+        <input type="email" name="email" ng-model="email" required>
+
+        <br><br>
+
+        <!-- Error Messages -->
+        <span class="error" ng-show="myForm.email.$error.required">
+            Email is required
+        </span>
+
+        <span class="error" ng-show="myForm.email.$error.email">
+            Invalid email format
+        </span>
+
+        <br><br>
+
+        <button ng-disabled="myForm.$invalid">Submit</button>
+
+    </form>
+
+    <script>
+        var app = angular.module("myApp", []);
+
+        app.controller("MainController", function($scope) {
+            $scope.email = "";
+        });
+    </script>
+
+</body>
+</html>
